@@ -1,4 +1,6 @@
-funcaptcha-phpbb-3
-==================
+funcaptcha-phpBB
+====================
 
-phpBB 3.x plugin for FunCaptcha.
+phpBB plugin for FunCaptcha.
+
+This plugin enables you to use FunCaptcha to protect your phpBB forum from spam. See documentation.html for a full installation guide.
