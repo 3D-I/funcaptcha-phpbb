@@ -59,12 +59,11 @@ class phpbb_funcaptcha extends phpbb_default_captcha
 		$captcha_vars=array(
 			'funcaptcha_theme'		=> 'FUNCAPTCHA_THEME',
 			'funcaptcha_security'	=> 'FUNCAPTCHA_SECURITY',
-                        'funcaptcha_lightbox'	=> 'FUNCAPTCHA_LIGHTBOX',
-                        'funcaptcha_javascript'	=> 'FUNCAPTCHA_JAVASCRIPT',
-                        'funcaptcha_public_key'	=> 'FUNCAPTCHA_PUBLIC_KEY',
-                        'funcaptcha_private_key'	=> 'FUNCAPTCHA_PRIVATE_KEY',
-                        'funcaptcha_proxy'	=> 'FUNCAPTCHA_PROXY',
-                        'funcaptcha_number_posts'	=> 'FUNCAPTCHA_NUMBER_POSTS',
+            'funcaptcha_javascript'	=> 'FUNCAPTCHA_JAVASCRIPT',
+            'funcaptcha_public_key'	=> 'FUNCAPTCHA_PUBLIC_KEY',
+            'funcaptcha_private_key'	=> 'FUNCAPTCHA_PRIVATE_KEY',
+            'funcaptcha_proxy'	=> 'FUNCAPTCHA_PROXY',
+            'funcaptcha_number_posts'	=> 'FUNCAPTCHA_NUMBER_POSTS',
 		);
 		
 		$max_len_str_with_code=1530;
@@ -82,8 +81,7 @@ class phpbb_funcaptcha extends phpbb_default_captcha
 			foreach($captcha_vars as $captcha_var)
 			{
 				$value=request_var( $captcha_var, '' );
-                                
-                                set_config( $captcha_var, $value );
+	            set_config( $captcha_var, $value );
 			}
 
 			add_log( 'admin', 'LOG_CONFIG_VISUAL' );
@@ -126,24 +124,23 @@ class phpbb_funcaptcha extends phpbb_default_captcha
 		}
 		else
 		{
-                        $funcaptcha =  new FUNCAPTCHA();
-                        $funcaptcha->setSecurityLevel($config['funcaptcha_security']);
-                        $funcaptcha->setLightboxMode($config['funcaptcha_lightbox']);
-                        $funcaptcha->setTheme($config['funcaptcha_theme']);
-                        $funcaptcha->setNoJSFallback($config['funcaptcha_javascript']);
+            $funcaptcha =  new FUNCAPTCHA();
+            $funcaptcha->setSecurityLevel($config['funcaptcha_security']);
+            $funcaptcha->setLightboxMode($config['funcaptcha_lightbox']);
+            $funcaptcha->setTheme($config['funcaptcha_theme']);
+            $funcaptcha->setNoJSFallback($config['funcaptcha_javascript']);
 
-                        //only show HTML/label if not lightbox mode.
-                        if ($config['funcaptcha_lightbox']) {
-                                $output = $funcaptcha->getFunCaptcha($config['funcaptcha_public_key']);
-                        } else {
-                                $output = "<div class=\"blockrow\"><input type=hidden value='1' id='humanverify' name='humanverify' /><div class=\"group\"><li>";
-                                $output = $output . "<label>Verification:</label>";
-                                $output = $output . $funcaptcha->getFunCaptcha($config['funcaptcha_public_key']);
-                                $output = $output . "</li></div></div>";
-                        }
-		
-                
-                // End custom
+            //only show HTML/label if not lightbox mode.
+            if ($config['funcaptcha_lightbox']) {
+                    $output = $funcaptcha->getFunCaptcha($config['funcaptcha_public_key']);
+            } else {
+                    $output = "<div class=\"blockrow\"><input type=hidden value='1' id='humanverify' name='humanverify' /><div class=\"group\">";
+                    $output = $output . $funcaptcha->getFunCaptcha($config['funcaptcha_public_key']);
+                    $output = $output . "</div></div>";
+            }
+
+            
+            // End custom
                 
 			$template->assign_vars( array(
 				'S_FUNCAPTCHA_AVAILABLE'	=> $this->is_available(),
@@ -221,13 +218,12 @@ class phpbb_funcaptcha extends phpbb_default_captcha
 		}
 		else
 		{
-                    
-                    $funcaptcha =  new FUNCAPTCHA();
-                    $funcaptcha->setSecurityLevel($config['funcaptcha_security']);
-                    $funcaptcha->setLightboxMode($config['funcaptcha_lightbox']);
-                    $funcaptcha->setTheme($config['funcaptcha_theme']);
-                    $funcaptcha->setNoJSFallback($config['funcaptcha_javascript']);
-                    $score =  $funcaptcha->checkResult($config['funcaptcha_private_key']);
+            $funcaptcha =  new FUNCAPTCHA();
+            $funcaptcha->setSecurityLevel($config['funcaptcha_security']);
+            $funcaptcha->setLightboxMode($config['funcaptcha_lightbox']);
+            $funcaptcha->setTheme($config['funcaptcha_theme']);
+            $funcaptcha->setNoJSFallback($config['funcaptcha_javascript']);
+            $score =  $funcaptcha->checkResult($config['funcaptcha_private_key']);
 			if($score)
 			{
 				$this->solved=true;

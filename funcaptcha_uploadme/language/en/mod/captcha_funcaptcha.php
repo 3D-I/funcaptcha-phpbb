@@ -26,8 +26,6 @@ $lang = array_merge($lang, array(
         'FUNCAPTCHA_FIELD_THEME_EXPLAIN'	=> 'This will change the appearance of FunCaptcha (see here for what they look like)',
         'FUNCAPTCHA_FIELD_SECURITY_CAPTION'	=> 'FunCaptcha Security Level',
         'FUNCAPTCHA_FIELD_SECURITY_EXPLAIN'	=> 'If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha\'s monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past',
-        'FUNCAPTCHA_FIELD_MODE_CAPTION'	=> 'FunCaptcha Lightbox Mode',
-        'FUNCAPTCHA_FIELD_MODE_EXPLAIN'	=> 'Lightbox mode will show FunCaptcha once the user submits your form, rather than on the page. Inline mode will show FunCaptcha on your page as the user completes your form. We recommend Lightbox for the best user experience',
         'FUNCAPTCHA_FIELD_FALLBACK_CAPTION'	=> 'Javascript Fallback',
         'FUNCAPTCHA_FIELD_FALLBACK_EXPLAIN'	=> 'If the user does not have Javascript enabled, display a fallback CAPTCHA? (Most bots have Javascript disabled, we recommend you leave this disabled):',
         'FUNCAPTCHA_FIELD_PUBLIC_CAPTION'	=> 'FunCaptcha Public Key',
@@ -41,8 +39,6 @@ $lang = array_merge($lang, array(
         'FUNCAPTCHA_WEBSITE'	=> 'FUNCAPTCHA KEYS',
         'FUNCAPTCHA_SECURITY_AUTOMATIC'	=> 'Automatic',
         'FUNCAPTCHA_SECURITY_ENHANCED'	=> 'Always Enhanced',
-        'FUNCAPTCHA_LIGHTBOX_INLINE'	=> 'Inline',
-        'FUNCAPTCHA_LIGHTBOX_ON'	=> 'Lightbox',
         'FUNCAPTCHA_FALLBACK_DISABLE'	=> 'Disable',
         'FUNCAPTCHA_FALLBACK_ENABLE'	=> 'Enable',
     ));

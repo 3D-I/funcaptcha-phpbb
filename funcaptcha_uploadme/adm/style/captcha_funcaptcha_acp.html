@@ -26,22 +26,15 @@
         <dl>
             <dt><label for="funcaptcha_security">{L_FUNCAPTCHA_FIELD_SECURITY_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_SECURITY_EXPLAIN}</span></dt>
             <dd>
-                <label><input id="funcaptcha_security" name="funcaptcha_security" value="0" class="radio" type="radio"  IF FUNCAPTCHA_SECURITYchecked="checked" ENDIF /> {L_FUNCAPTCHA_SECURITY_AUTOMATIC}</label>
-                <label><input name="funcaptcha_security" value="20" class="radio" type="radio"  IF not FUNCAPTCHA_SECURITY checked="checked" ENDIF /> {L_FUNCAPTCHA_SECURITY_ENHANCED}</label>
-            </dd>
-        </dl>
-
-        <dl>
-            <dt><label for="funcaptcha_lightbox">{L_FUNCAPTCHA_FIELD_MODE_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_MODE_EXPLAIN}</span></dt>
-            <dd><label><input name="funcaptcha_lightbox" value="1" class="radio" type="radio" <!-- IF FUNCAPTCHA_LIGHTBOX -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_LIGHTBOX_ON}</label>
-                <label><input name="funcaptcha_lightbox" value="0" class="radio" type="radio" <!-- IF not FUNCAPTCHA_LIGHTBOX -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_LIGHTBOX_INLINE}</label>
+                <label><input id="funcaptcha_security" name="funcaptcha_security" value="0" class="radio" type="radio" <!-- IF FUNCAPTCHA_SECURITY == 0 -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_SECURITY_AUTOMATIC}</label>
+                <label><input name="funcaptcha_security" value="20" class="radio" type="radio"  <!-- IF FUNCAPTCHA_SECURITY == 20 -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_SECURITY_ENHANCED}</label>
             </dd>
         </dl>
 
         <dl>
             <dt><label for="funcaptcha_javascript">{L_FUNCAPTCHA_FIELD_FALLBACK_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_FALLBACK_EXPLAIN}</span></dt>
-            <dd><label><input id="funcaptcha_javascript" name="funcaptcha_javascript" value="1" class="radio" type="radio" <!-- IF FUNCAPTCHA_JAVASCRIPT -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_FALLBACK_DISABLE}</label>
-                <label><input name="funcaptcha_javascript" value="0" class="radio" type="radio" <!-- IF not FUNCAPTCHA_JAVASCRIPT -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_FALLBACK_ENABLE}</label>
+            <dd><label><input id="funcaptcha_javascript" name="funcaptcha_javascript" value="1" class="radio" type="radio" <!-- IF FUNCAPTCHA_JAVASCRIPT -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_FALLBACK_ENABLE}</label>
+                <label><input name="funcaptcha_javascript" value="0" class="radio" type="radio" <!-- IF not FUNCAPTCHA_JAVASCRIPT -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_FALLBACK_DISABLE}</label>
             </dd>
         </dl>
 
