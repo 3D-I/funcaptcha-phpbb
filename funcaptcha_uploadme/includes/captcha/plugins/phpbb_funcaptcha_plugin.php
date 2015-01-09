@@ -138,6 +138,9 @@ class phpbb_funcaptcha extends phpbb_default_captcha
                     $output = $output . $funcaptcha->getFunCaptcha($config['funcaptcha_public_key']);
                     $output = $output . "</div></div>";
             }
+			
+			// update local config vars:
+			$this->updateLocal($funcaptcha->remote_options);
 
             
             // End custom
@@ -170,6 +173,30 @@ class phpbb_funcaptcha extends phpbb_default_captcha
 			{
 				return '../../prosilver/template/captcha_funcaptcha_default.html';
 			}
+		}
+	}
+	
+	function updateLocal($remote_options)
+	{
+		if (!isset($remote_options))
+			return;
+			
+		$arOptMap = array(
+			'proxy' => 'funcaptcha_proxy',
+			'security_level' => 'funcaptcha_security',
+			'theme' => 'funcaptcha_theme',
+			'noscript_support' => 'funcaptcha_jsfallback',
+		);
+		
+		foreach(array_keys($remote_options) as $key)
+		{
+			try{
+				if (isset($arOptMap[$key]))
+				{
+					// set config:
+					set_config( $arOptMap[$key], $remote_options[$key] );
+				}
+			} catch (\Exception $e) {}
 		}
 	}
 
