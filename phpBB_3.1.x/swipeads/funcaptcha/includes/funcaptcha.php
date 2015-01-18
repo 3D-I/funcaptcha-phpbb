@@ -18,8 +18,10 @@
  * THE SOFTWARE.
  *
  */
-define("FUNCAPTCHA_SERVER", "funcaptcha.com");
+namespace swipeads\funcaptcha\includes;
+
 // Define class if it does not already exist
+define("FUNCAPTCHA_SERVER", "funcaptcha.co");
 if ( ! class_exists('FUNCAPTCHA')) {
 	class FUNCAPTCHA {
 		// Set defaults for values that can be specified via the config file or passed in via __construct.
@@ -71,6 +73,8 @@ if ( ! class_exists('FUNCAPTCHA')) {
 		 */
 		public function getFunCaptcha($public_key, $args=null)
 		{
+			global $request;
+			
 			$this->funcaptcha_public_key = $public_key;
 			if ($this->funcaptcha_public_key == "" || $this->funcaptcha_public_key == null)
 			{
@@ -83,9 +87,9 @@ if ( ! class_exists('FUNCAPTCHA')) {
 			//send your public key, your site name, the users ip and browser type.
 			$data = array(
 				'public_key'			=> $this->funcaptcha_public_key,
-				'site' 					=> $_SERVER["SERVER_NAME"],
-				'userip'	 			=> $_SERVER["REMOTE_ADDR"],
-				'userbrowser'			=> $_SERVER['HTTP_USER_AGENT'],
+				'site' 					=> $request->variable('SERVER_NAME', ''),
+				'userip'	 			=> $request->variable('REMOTE_ADDR', ''),
+				'userbrowser'			=> $request->variable('HTTP_USER_AGENT', ''),
 				'api_type'				=> $this->funcaptcha_api_type,
 				'plugin_version'		=> $this->funcaptcha_plugin_version,
 				'security_level'		=> $this->funcaptcha_security_level,
@@ -129,7 +133,8 @@ if ( ! class_exists('FUNCAPTCHA')) {
 				// update local props:
 				$this->updateLocal($session->remote_options);
 			}
-			if ($this->session_token && $this->funcaptcha_challenge_url && $this->funcaptcha_host) 
+
+            if ($this->session_token && $this->funcaptcha_challenge_url && $this->funcaptcha_host)
 			{
 				//return html to generate captcha.
 				$url = "https://";
@@ -255,9 +260,12 @@ if ( ! class_exists('FUNCAPTCHA')) {
 		 * @param array $args - Additional information to pass to FunCaptcha servers
 		 * @return boolean
 		 */
-		public function checkResult($private_key, $args=null) {
+		public function checkResult($private_key, $args=null) 
+		{
+			global $request;
+			
 			$this->funcaptcha_private_key = $private_key;
-			$this->msgLog("DEBUG", ("Session token to check: " . $_POST['fc-token']));
+			$this->msgLog("DEBUG", ("Session token to check: " . $request->variable('fc-token', '')));
 			if ($this->funcaptcha_private_key == "")
 			{
 				$this->msgLog("ERROR", "Warning: Private key is not set.");
@@ -266,11 +274,11 @@ if ( ! class_exists('FUNCAPTCHA')) {
 			{
 				$this->msgLog("DEBUG", "Private key: '$this->funcaptcha_private_key'");
 			}
-			if ($_POST['fc-token']) {
+			if ($request->variable('fc-token','')) {
 				$data = array(
 					'private_key' 		=> $this->funcaptcha_private_key,
-					'session_token' 	=> $_POST['fc-token'],
-					'fc_rc_challenge' 	=> ($_POST['fc_rc_challenge'] ? $_POST['fc_rc_challenge'] : null),
+					'session_token' 	=> $request->variable('fc-token', ''),
+					'fc_rc_challenge' 	=> ($request->variable('fc_rc_challenge', '') ? $request->variable('fc_rc_challenge', '') : null),
 					'args'				=> $args
 				);
 				$result = $this->doPostReturnObject('/fc/v/', $data);

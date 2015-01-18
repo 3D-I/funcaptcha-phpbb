@@ -1,0 +1,13 @@
+services:            
+    swipeads.funcaptcha.controller:
+        class: swipeads\funcaptcha\controller\funcaptcha
+        scope: prototype
+        arguments:
+            - @config
+            - @controller.helper
+            - @template
+            - @user
+        calls:
+            - [set_name, [swipeads.funcaptcha.controller.funcaptcha]]
+        tags:
+            - { name: captcha.plugins }

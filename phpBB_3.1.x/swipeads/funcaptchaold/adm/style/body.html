@@ -1,0 +1,78 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_SETTINGS}</h1>
+
+<form id="acp_board" method="post" action="{U_ACTION}">
+    <fieldset>
+        <legend>{L_GENERAL_OPTIONS}</legend>
+
+        <dl>
+            <dt><label for="funcaptcha_theme">{L_FUNCAPTCHA_FIELD_THEME_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_THEME_EXPLAIN}</span></dt>
+            <dd>
+                <label><input id="funcaptcha_theme" name="funcaptcha_theme" value="0" class="radio" type="radio" <!-- IF not FUNCAPTCHA_THEME  -->checked="checked"<!-- ENDIF -->/> Standard</label>
+                <label><input name="funcaptcha_theme" value="2" class="radio" type="radio" <!-- IF FUNCAPTCHA_THEME == 2 -->checked="checked"<!-- ENDIF -->/> vBulletin Blue</label>
+                <label><input name="funcaptcha_theme" value="3" class="radio" type="radio" <!-- IF FUNCAPTCHA_THEME == 3 -->checked="checked"<!-- ENDIF -->/> White</label>
+                <label><input name="funcaptcha_theme" value="4" class="radio" type="radio" <!-- IF FUNCAPTCHA_THEME == 4 -->checked="checked"<!-- ENDIF -->/> Black</label>
+                <label><input name="funcaptcha_theme" value="5" class="radio" type="radio" <!-- IF FUNCAPTCHA_THEME == 5 -->checked="checked"<!-- ENDIF -->/> Automotive</label>
+            </dd>
+        </dl>
+        
+        <dl>
+            <dt><label for="funcaptcha_security">{L_FUNCAPTCHA_FIELD_SECURITY_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_SECURITY_EXPLAIN}</span></dt>
+            <dd>
+                <label><input id="funcaptcha_security" name="funcaptcha_security" value="0" class="radio" type="radio"  IF FUNCAPTCHA_SECURITYchecked="checked" ENDIF /> {L_FUNCAPTCHA_SECURITY_AUTOMATIC}</label>
+                <label><input name="funcaptcha_security" value="20" class="radio" type="radio"  IF not FUNCAPTCHA_SECURITY checked="checked" ENDIF /> {L_FUNCAPTCHA_SECURITY_ENHANCED}</label>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt><label for="funcaptcha_lightbox">{L_FUNCAPTCHA_FIELD_MODE_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_MODE_EXPLAIN}</span></dt>
+            <dd><label><input name="funcaptcha_lightbox" value="1" class="radio" type="radio" <!-- IF FUNCAPTCHA_LIGHTBOX -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_LIGHTBOX_ON}</label>
+                <label><input name="funcaptcha_lightbox" value="0" class="radio" type="radio" <!-- IF not FUNCAPTCHA_LIGHTBOX -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_LIGHTBOX_INLINE}</label>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt><label for="funcaptcha_javascript">{L_FUNCAPTCHA_FIELD_FALLBACK_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_FALLBACK_EXPLAIN}</span></dt>
+            <dd><label><input id="funcaptcha_javascript" name="funcaptcha_javascript" value="1" class="radio" type="radio" <!-- IF FUNCAPTCHA_JAVASCRIPT -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_FALLBACK_DISABLE}</label>
+                <label><input name="funcaptcha_javascript" value="0" class="radio" type="radio" <!-- IF not FUNCAPTCHA_JAVASCRIPT -->checked="checked"<!-- ENDIF -->/> {L_FUNCAPTCHA_FALLBACK_ENABLE}</label>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt><label for="funcaptcha_public_key">{L_FUNCAPTCHA_FIELD_PUBLIC_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_PUBLIC_EXPLAIN}</span></dt>
+            <dd><input id="funcaptcha_public_key" name="funcaptcha_public_key" value="{FUNCAPTCHA_PUBLIC_KEY}" size="100" type="text" /></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="funcaptcha_private_key">{L_FUNCAPTCHA_FIELD_PRIVATE_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_PRIVATE_EXPLAIN}</span></dt>
+            <dd><input id="funcaptcha_private_key" name="funcaptcha_private_key" value="{FUNCAPTCHA_PRIVATE_KEY}" size="100" type="text" /></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="funcaptcha_proxy">{L_FUNCAPTCHA_FIELD_PROXY_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_PROXY_EXPLAIN}</span></dt>
+            <dd><input id="funcaptcha_proxy" name="funcaptcha_proxy" value="{FUNCAPTCHA_PROXY}" size="50" type="text" /></dd>
+        </dl>
+
+<!--        <dl>
+            <dt><label for="funcaptcha_number_posts">{L_FUNCAPTCHA_FIELD_POSTS_CAPTION}:</label><br /><span>{L_FUNCAPTCHA_FIELD_POSTS_EXPLAIN}</span></dt>
+            <dd><input id="funcaptcha_number_posts" name="funcaptcha_number_posts" value="{FUNCAPTCHA_NUMBER_POSTS}" size="2" type="text" /></dd>
+        </dl>-->
+
+    </fieldset>
+	<fieldset>
+		<dl>
+			<dt><label for="acme_demo_goodbye">{L_ACP_DEMO_GOODBYE}</label></dt>
+			<dd><input type="radio" class="radio" name="acme_demo_goodbye" value="1" <!-- IF ACME_DEMO_GOODBYE -->checked="checked"<!-- ENDIF -->/> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="acme_demo_goodbye" value="0" <!-- IF not ACME_DEMO_GOODBYE -->checked="checked"<!-- ENDIF --> /> {L_NO}</dd>
+		</dl>
+
+		<p class="submit-buttons">
+			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+		</p>
+
+		{S_FORM_TOKEN}
+	</fieldset>
+</form>
+<!-- INCLUDE overall_footer.html -->
